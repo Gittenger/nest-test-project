@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param, Post, Req } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -18,8 +18,8 @@ export class CatsController {
     return 'This returns all cats';
   }
 
-  @Get('spot')
-  getSpot(): string {
-    return 'This returns the cat Spot';
+  @Get(':name')
+  showName(@Param('name') paramName: string): string {
+    return paramName;
   }
 }
