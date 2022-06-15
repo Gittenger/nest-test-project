@@ -13,6 +13,7 @@ export class AppController {
 
 export class CreateCatDto {
   name: string;
+  id: number;
 }
 
 @Controller('cats')
@@ -28,7 +29,7 @@ export class CatsController {
   }
 
   @Post('data')
-  showData(@Body() body: CreateCatDto): string {
-    return `The cat's name is ${body.name}`;
+  showData(@Body('name') name: string, @Body('id') id: number): string {
+    return `The cat's name is ${name} and its id is ${id.toString()}`;
   }
 }
